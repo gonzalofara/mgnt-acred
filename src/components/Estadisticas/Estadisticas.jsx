@@ -9,7 +9,7 @@ const Estadisticas = ({ invitadosArr, evento }) => {
   console.log("ESTADISTICAS", invitadosArr);
   const pending = invitadosArr?.filter((p) => p.status === "pendiente").length;
   const accredited = invitadosArr?.filter(
-    (p) => p.status == "acreditado"
+    (p) => p.status === "acreditado"
   ).length;
 
   const percentage = Math.floor((accredited * 100) / invitadosArr?.length);

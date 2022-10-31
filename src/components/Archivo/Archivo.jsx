@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllEvents,
-  resetEventDetail,
-  setEventStatus,
-} from "../../redux/actions/actions";
+import { getAllEvents, setEventStatus } from "../../redux/actions/actions";
 import SideBar from "../SideBar/SideBar";
 import ArchivoAside from "./ArchivoAside";
 import Error from "../Error/Error";

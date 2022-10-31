@@ -32,7 +32,8 @@ const Evento = (props) => {
   useEffect(() => {
     dispatch(resetInvitadoDetail());
     dispatch(getEventDetail(id));
-  }, [dispatch, evento.status]);
+    /* eslint-disable */
+  }, [dispatch, evento?.status]);
 
   const handlehidden = (e) => {
     setDisabled(!disabled);
@@ -110,10 +111,7 @@ const Evento = (props) => {
             aria-label="Breadcrumb"
             className="flex mt-4 justify-center md:justify-start dark:bg-gray-900"
           >
-            <ol
-              role="list"
-              className="flex gap-2 overflow-hidden text-gray-700 dark:bg-gray-900"
-            >
+            <ol className="flex gap-2 overflow-hidden text-gray-700 dark:bg-gray-900">
               <li className="flex items-center dark:bg-gray-900">
                 <p className="flex h-6 items-center bg-gray-100 dark:bg-gray-900 dark:text-gray-200 px-2 transition-colors hover:text-gray-900 dark:hover:text-gray-400">
                   <FaUsers size={20} />

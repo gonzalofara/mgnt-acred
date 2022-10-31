@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { MdOutlineAlternateEmail } from "react-icons/md";
 import Logo from "../../assets/magnetica_rayo.png";
 import axios from "axios";
 import Landing from "../Landing/Landing";

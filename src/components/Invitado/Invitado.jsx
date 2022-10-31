@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getInvitado, setInvitadoStatus } from "../../redux/actions/actions";
 import SideBar from "../SideBar/SideBar";
 import Aside from "../Aside/Aside";
 import Error from "../Error/Error";
-import { BsFillArchiveFill } from "react-icons/bs";
 import { FaUsers, FaIdCard } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 const Invitado = (props) => {
   const id = props.match.params.id;

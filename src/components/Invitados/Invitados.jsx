@@ -21,6 +21,7 @@ const Invitados = (props) => {
   useEffect(() => {
     dispatch(resetEventDetail());
     dispatch(getEventDetail(id));
+    /* eslint-disable */
   }, [dispatch]);
   let n = 0;
 

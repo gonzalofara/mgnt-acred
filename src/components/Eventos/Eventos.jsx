@@ -11,10 +11,8 @@ import Aside from "../Aside/Aside";
 import Error from "../Error/Error";
 import { BsFillArchiveFill } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
-import { IoMdAdd } from "react-icons/io";
-import { MdOutlineAddCircle } from "react-icons/md";
 
-import Swal from "sweetalert2";
+import { MdOutlineAddCircle } from "react-icons/md";
 
 const Eventos = () => {
   const eventos = useSelector((state) => state.eventos);
@@ -25,9 +23,6 @@ const Eventos = () => {
   const [showFiltered, setShowFiltered] = useState(false);
 
   const dispatch = useDispatch();
-
-  const activos = eventos?.filter((e) => e.status === "active").length;
-  const finalizados = eventos?.filter((e) => e.status === "closed").length;
 
   const handleChange = (e) => {
     let events = eventos;

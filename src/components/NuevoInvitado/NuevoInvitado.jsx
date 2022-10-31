@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { postEvents } from "../../redux/actions/actions";
 import SideBar from "../SideBar/SideBar";
 import Aside from "../Aside/Aside";
 import Error from "../Error/Error";
@@ -11,7 +9,6 @@ import axios from "axios";
 const NuevoInvitado = (props) => {
   const id = props.match.params.id;
   const tk = sessionStorage.getItem("token");
-  const dispatch = useDispatch();
   const history = useHistory();
   //Estados
   const [invitado, setInvitado] = useState({
