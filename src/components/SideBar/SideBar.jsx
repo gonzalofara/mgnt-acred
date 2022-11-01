@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdArrowRoundBack, IoMdAdd, IoMdListBox } from "react-icons/io";
 import logo from "../../assets/magnetica_rayo.png";
@@ -77,12 +77,14 @@ const SideBar = ({ evento, id }) => {
              md:pt-0 md:items-center"
           >
             <li>
-              <a
-                className="block text-gray-500 hover:text-teal-500"
-                href="/eventos"
-              >
-                Eventos
-              </a>
+              <Link to="/eventos">
+                <span
+                  className="block text-gray-500 hover:text-teal-500"
+                  // href="/eventos"
+                >
+                  Eventos
+                </span>
+              </Link>
             </li>
             <li>
               <a
