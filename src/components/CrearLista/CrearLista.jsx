@@ -38,9 +38,9 @@ const CrearLista = (props) => {
 
       reader.readAsArrayBuffer(e.target.files[0]);
       const filename = e.target.files[0]?.name.replace("_", " ");
-      const cut = filename?.indexOf(".");
+      // const cut = filename?.indexOf(".");
       console.log(filename);
-      filename && setListName({ listName: filename.slice(0, cut) });
+      filename && setListName({ listName: filename });
     }
   };
   console.log("LA LISTA", lista);
@@ -60,7 +60,6 @@ const CrearLista = (props) => {
           axios
             .post(
               `https://backenddeploy-production.up.railway.app/invitados/${id}`,
-              { withCredentials: true },
               [lista, listName]
             )
             .then((res) => {
