@@ -20,16 +20,24 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Landing} />
-          <Route path="/login" component={LandingPage} />
-          <Route path="/general" component={Dashboard} />
-          <Route path="/eventos" component={Eventos} />
-          <Route path="/eventos/:id" component={Evento} />
-          <Route path="/eventos/:id/invitados" component={Invitados} />
-          <Route path="/eventos/:id/nuevoinvitado" component={NuevoInvitado} />
-          <Route path="/invitados/:id" component={Invitado} />
-          <Route path="/eventos/:id/listas/crear" component={CrearLista} />
-          <Route path="/evento/crear" component={NuevoEvento} />
-          <Route path="/archivo" component={Archivo} />
+          <Route exact path="/login" component={LandingPage} />
+          <Route exact path="/general" component={Dashboard} />
+          <Route exact path="/eventos" component={Eventos} />
+          <Route exact path="/eventos/:id" component={Evento} />
+          <Route exact path="/eventos/:id/invitados" component={Invitados} />
+          <Route
+            exact
+            path="/eventos/:id/nuevoinvitado"
+            component={NuevoInvitado}
+          />
+          <Route exact path="/invitados/:id" component={Invitado} />
+          <Route
+            exact
+            path="/eventos/:id/listas/crear"
+            component={CrearLista}
+          />
+          <Route exact path="/evento/crear" component={NuevoEvento} />
+          <Route exact path="/archivo" component={Archivo} />
           <Route path="*" component={Error} />
         </Switch>
       </BrowserRouter>
