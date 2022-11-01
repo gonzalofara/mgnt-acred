@@ -66,10 +66,10 @@ const Aside = ({ id, event, invitados, nuevoInv }) => {
               data-mdb-ripple="true"
               data-mdb-ripple-color="dark"
             >
-              <IoMdArrowRoundBack size={22} onClick={() => history.back()} />
+              <IoMdArrowRoundBack size={22} onClick={() => history.goBack()} />
               <span
                 className="mt-px text-gray-600 hover:text-gray-700 text-base cursor-pointer"
-                onClick={() => history.back()}
+                onClick={() => history.goBack()}
               >
                 Volver
               </span>
