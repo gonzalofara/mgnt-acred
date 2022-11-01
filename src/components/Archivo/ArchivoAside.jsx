@@ -12,7 +12,7 @@ const ArchivoAside = () => {
 
           <div
             className="flex gap-px items-center text-sm cursor-pointer px-6 h-10 overflow-hidden text-teal-500 text-ellipsis whitespace-nowrap rounded hover:text-teal-400 hover:bg-gray-200 transition duration-300 ease-in-out"
-            onClick={() => history.back()}
+            onClick={() => history.goBack()}
           >
             <IoMdArrowRoundBack size={22} />
             <span className="text-gray-600 hover:text-gray-700 text-base">
