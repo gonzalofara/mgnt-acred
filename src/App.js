@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Eventos from "./components/Eventos/Eventos";
@@ -17,7 +17,7 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/login" component={LandingPage} />
@@ -40,7 +40,7 @@ function App() {
           <Route exact path="/archivo" component={Archivo} />
           <Route path="*" component={Error} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
