@@ -20,24 +20,19 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Landing />} />
-          <Route exact path="/login" element={<LandingPage />} />
-          <Route exact path="/general" element={<Dashboard />} />
-          <Route exact path="/eventos" element={<Eventos />} />
-          <Route exact path="/eventos/:id" element={<Evento />} />
-          <Route exact path="/eventos/:id/invitados" element={<Invitados />} />
+          <Route path="/login" element={<LandingPage />} />
+          <Route path="/general" element={<Dashboard />} />
+          <Route path="/eventos" element={<Eventos />} />
+          <Route path="/eventos/:id" element={<Evento />} />
+          <Route path="/eventos/:id/invitados" element={<Invitados />} />
           <Route
-            exact
             path="/eventos/:id/nuevoinvitado"
             element={<NuevoInvitado />}
           />
-          <Route exact path="/invitados/:id" element={<Invitado />} />
-          <Route
-            exact
-            path="/eventos/:id/listas/crear"
-            element={<CrearLista />}
-          />
-          <Route exact path="/evento/crear" element={<NuevoEvento />} />
-          <Route exact path="/archivo" element={<Archivo />} />
+          <Route path="/invitados/:id" element={<Invitado />} />
+          <Route path="/eventos/:id/listas/crear" element={<CrearLista />} />
+          <Route path="/evento/crear" element={<NuevoEvento />} />
+          <Route path="/archivo" element={<Archivo />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
