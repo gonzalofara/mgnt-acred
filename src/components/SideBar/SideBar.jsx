@@ -57,7 +57,7 @@ const SideBar = ({ evento, id }) => {
         <div className="flex items-center gap-6 md:hidden block">
           <div
             className="cursor-pointer flex items-center"
-            onClick={() => History.back()}
+            onClick={() => window.back()}
           >
             <IoMdArrowRoundBack size={24} />
             <p className="text-sm text-gray-400 ">Volver</p>
