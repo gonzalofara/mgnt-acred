@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import Logo from "../../assets/magnetica_rayo.png";
 import axios from "axios";
 import Landing from "../Landing/Landing";
+import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
   const [input, setInput] = useState({ email: "", password: "" });
   const [showError, setShowError] = useState(false);
   const [error, setError] = useState("");
-
+  const history = useHistory();
   const tk = sessionStorage.getItem("token");
   const handleChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -26,7 +27,7 @@ const LandingPage = () => {
         const { token } = res.data;
         sessionStorage.setItem("token", token);
         console.log(token);
-        window.location.assign("/general");
+        history.push("/general");
       })
       .catch((err) => {
         console.log(err);
