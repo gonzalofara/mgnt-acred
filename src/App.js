@@ -19,21 +19,18 @@ function App() {
     <div>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" element={<Landing />} />
-          <Route path="/login" element={<LandingPage />} />
-          <Route path="/general" element={<Dashboard />} />
-          <Route path="/eventos" element={<Eventos />} />
-          <Route path="/eventos/:id" element={<Evento />} />
-          <Route path="/eventos/:id/invitados" element={<Invitados />} />
-          <Route
-            path="/eventos/:id/nuevoinvitado"
-            element={<NuevoInvitado />}
-          />
-          <Route path="/invitados/:id" element={<Invitado />} />
-          <Route path="/eventos/:id/listas/crear" element={<CrearLista />} />
-          <Route path="/evento/crear" element={<NuevoEvento />} />
-          <Route path="/archivo" element={<Archivo />} />
-          <Route path="*" element={<Error />} />
+          <Route exact path="/" component={Landing} />
+          <Route path="/login" component={LandingPage} />
+          <Route path="/general" component={Dashboard} />
+          <Route path="/eventos" component={Eventos} />
+          <Route path="/eventos/:id" component={Evento} />
+          <Route path="/eventos/:id/invitados" component={Invitados} />
+          <Route path="/eventos/:id/nuevoinvitado" component={NuevoInvitado} />
+          <Route path="/invitados/:id" component={Invitado} />
+          <Route path="/eventos/:id/listas/crear" component={CrearLista} />
+          <Route path="/evento/crear" component={NuevoEvento} />
+          <Route path="/archivo" component={Archivo} />
+          <Route path="*" component={Error} />
         </Switch>
       </BrowserRouter>
     </div>
