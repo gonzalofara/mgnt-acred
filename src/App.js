@@ -1,4 +1,5 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Eventos from "./components/Eventos/Eventos";
@@ -15,32 +16,32 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/login" component={LandingPage} />
-          <Route exact path="/general" component={Dashboard} />
-          <Route exact path="/eventos" component={Eventos} />
-          <Route exact path="/eventos/:id" component={Evento} />
-          <Route exact path="/eventos/:id/invitados" component={Invitados} />
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/login" element={<LandingPage />} />
+          <Route exact path="/general" element={<Dashboard />} />
+          <Route exact path="/eventos" element={<Eventos />} />
+          <Route exact path="/eventos/:id" element={<Evento />} />
+          <Route exact path="/eventos/:id/invitados" element={<Invitados />} />
           <Route
             exact
             path="/eventos/:id/nuevoinvitado"
-            component={NuevoInvitado}
+            element={<NuevoInvitado />}
           />
-          <Route exact path="/invitados/:id" component={Invitado} />
+          <Route exact path="/invitados/:id" element={<Invitado />} />
           <Route
             exact
             path="/eventos/:id/listas/crear"
-            component={CrearLista}
+            element={<CrearLista />}
           />
-          <Route exact path="/evento/crear" component={NuevoEvento} />
-          <Route exact path="/archivo" component={Archivo} />
-          <Route path="*" component={Error} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+          <Route exact path="/evento/crear" element={<NuevoEvento />} />
+          <Route exact path="/archivo" element={<Archivo />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
