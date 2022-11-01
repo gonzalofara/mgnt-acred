@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdArrowRoundBack, IoMdAdd, IoMdListBox } from "react-icons/io";
 import logo from "../../assets/magnetica_rayo.png";
@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const SideBar = ({ evento, id }) => {
   const [hidden, setHidden] = useState(true);
-  const history = useHistory();
+  // const history = useHistory();
   const handleHidden = () => {
     setHidden(!hidden);
   };
@@ -57,7 +57,7 @@ const SideBar = ({ evento, id }) => {
         <div className="flex items-center gap-6 md:hidden block">
           <div
             className="cursor-pointer flex items-center"
-            onClick={() => history.back()}
+            onClick={() => History.back()}
           >
             <IoMdArrowRoundBack size={24} />
             <p className="text-sm text-gray-400 ">Volver</p>
