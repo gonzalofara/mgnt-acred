@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Eventos from "./components/Eventos/Eventos";
@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
+        <Switch>
           <Route exact path="/" element={<Landing />} />
           <Route path="/login" element={<LandingPage />} />
           <Route path="/general" element={<Dashboard />} />
@@ -34,7 +34,7 @@ function App() {
           <Route path="/evento/crear" element={<NuevoEvento />} />
           <Route path="/archivo" element={<Archivo />} />
           <Route path="*" element={<Error />} />
-        </Routes>
+        </Switch>
       </BrowserRouter>
     </div>
   );
