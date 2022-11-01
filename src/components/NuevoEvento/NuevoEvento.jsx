@@ -25,7 +25,6 @@ const NuevoEvento = () => {
     });
   };
   const handleSubmit = (e) => {
-    console.log("ESTOY EN EL HANDLE");
     e.preventDefault();
 
     Swal.fire({

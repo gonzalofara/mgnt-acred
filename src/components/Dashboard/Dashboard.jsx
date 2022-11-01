@@ -15,8 +15,6 @@ const Dashboard = () => {
     dispatch(getAllEvents());
   }, [dispatch]);
 
-  console.log(eventos);
-
   if (tk) {
     return (
       <section className="w-full">

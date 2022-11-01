@@ -13,7 +13,6 @@ const Invitado = (props) => {
   const dispatch = useDispatch();
   const invitado = useSelector((state) => state.invitado);
   const evento = useSelector((state) => state.evento);
-  console.log(evento);
 
   useEffect(() => {
     dispatch(getInvitado(id));

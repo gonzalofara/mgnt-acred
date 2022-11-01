@@ -16,7 +16,6 @@ const Invitados = (props) => {
   const evento = useSelector((state) => state.evento);
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState([]);
-  console.log(id);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(resetEventDetail());

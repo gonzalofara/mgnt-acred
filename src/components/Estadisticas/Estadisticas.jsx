@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Estadisticas = ({ invitadosArr, evento }) => {
-  console.log("ESTADISTICAS", invitadosArr);
   const pending = invitadosArr?.filter((p) => p.status === "pendiente").length;
   const accredited = invitadosArr?.filter(
     (p) => p.status === "acreditado"
@@ -14,7 +13,6 @@ const Estadisticas = ({ invitadosArr, evento }) => {
 
   const percentage = Math.floor((accredited * 100) / invitadosArr?.length);
   const percentage2 = percentage.toString();
-  console.log(percentage2);
   const data = {
     labels: ["Acreditados", "Pendientes"],
     datasets: [

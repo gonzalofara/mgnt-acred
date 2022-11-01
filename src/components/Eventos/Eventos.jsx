@@ -44,8 +44,6 @@ const Eventos = () => {
     dispatch(getAllEvents());
   }, [dispatch]);
 
-  console.log(eventos);
-
   if (!tk) {
     return <Error />;
   } else {

@@ -14,8 +14,6 @@ const CrearLista = (props) => {
   const id = props.match.params.id;
   const tk = sessionStorage.getItem("token");
 
-  // console.log(id);
-  // const dispatch = useDispatch();
   const history = useHistory();
   const [lista, setLista] = useState([]);
   const [listName, setListName] = useState({});
@@ -31,20 +29,16 @@ const CrearLista = (props) => {
         json = json.map((i) => {
           return { ...i, inv_id: parseInt(i.id) };
         });
-        // console.log("EL YEISON", json);
         json.length !== 0 && setLista(json);
-        console.log(json);
       };
 
       reader.readAsArrayBuffer(e.target.files[0]);
       const filename = e.target.files[0]?.name.replace("_", " ");
       // const cut = filename?.indexOf(".");
-      console.log(filename);
       filename && setListName({ listName: filename });
     }
   };
-  console.log("LA LISTA", lista);
-  console.log("EL NOMBRE", listName);
+
   const handleSubmit = () => {
     if (lista.length > 0 && listName) {
       Swal.fire({

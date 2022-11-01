@@ -26,7 +26,6 @@ const LandingPage = () => {
       .then(async (res) => {
         const { token } = res.data;
         sessionStorage.setItem("token", token);
-        console.log(token);
         history.push("/general");
       })
       .catch((err) => {
