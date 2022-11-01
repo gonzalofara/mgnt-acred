@@ -54,11 +54,11 @@ const Estadisticas = ({ invitadosArr, evento }) => {
           <p className="font-semibold text-gray-50">{pending}</p>
         </span>
       </div>
-      {percentage && (
-        <div className="w-full mt-6 sm:w-1/2 mx-auto">
-          <Pie data={data} />;
-        </div>
-      )}
+
+      <div className="w-full mt-6 sm:w-1/2 mx-auto">
+        <Pie data={data} />;
+      </div>
+
       <div className="w-full bg-gray-200 rounded-full dark:bg-gray-700">
         <div
           className={`bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full `}
