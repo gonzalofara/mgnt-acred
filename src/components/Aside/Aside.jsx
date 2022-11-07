@@ -94,7 +94,7 @@ const Aside = ({ id, event, invitados, nuevoInv }) => {
             data-mdb-ripple-color="dark"
             onClick={() => crearLista()}
           >
-            <IoMdAdd size={22} />
+            <IoMdDownload size={22} />
             <span className="mt-px text-gray-600 hover:text-gray-700 text-base">
               Lista en blanco
             </span>
