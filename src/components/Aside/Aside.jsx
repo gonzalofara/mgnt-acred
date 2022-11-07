@@ -1,7 +1,12 @@
 import React from "react";
 import * as XLSX from "xlsx";
 import { Link, useHistory } from "react-router-dom";
-import { IoMdAdd, IoMdListBox, IoMdArrowRoundBack } from "react-icons/io";
+import {
+  IoMdAdd,
+  IoMdListBox,
+  IoMdArrowRoundBack,
+  IoMdDownload,
+} from "react-icons/io";
 const Aside = ({ id, event, invitados, nuevoInv }) => {
   const history = useHistory();
 
