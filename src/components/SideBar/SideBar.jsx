@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { IoMdArrowRoundBack, IoMdAdd, IoMdListBox } from "react-icons/io";
+import {
+  IoMdArrowRoundBack,
+  IoMdAdd,
+  IoMdListBox,
+  IoMdDownload,
+} from "react-icons/io";
 import logo from "../../assets/magnetica_rayo.png";
 import Swal from "sweetalert2";
+import * as XLSX from "xlsx";
 
 const SideBar = ({ evento, id }) => {
   const [hidden, setHidden] = useState(true);
@@ -11,6 +17,34 @@ const SideBar = ({ evento, id }) => {
   const handleHidden = () => {
     setHidden(!hidden);
   };
+
+  const nuevaLista = [
+    {
+      id: "",
+      list_id: "",
+      first_name: " ",
+      last_name: " ",
+      company: " ",
+      title: " ",
+      email: " ",
+      phone: " ",
+      dni: " ",
+      status: " ",
+      path: " ",
+      properties: " ",
+    },
+  ];
+  const crearLista = () => {
+    const workSheet = XLSX.utils.json_to_sheet(nuevaLista);
+    const workBook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workBook, workSheet, "nuevaLista");
+    XLSX.write(workBook, { bookType: "xlsx", type: "buffer" });
+    XLSX.write(workBook, { bookType: "xlsx", type: "binary" });
+
+    XLSX.writeFile(workBook, "nueva-lista.xlsx");
+  };
+
   const handleOut = () => {
     Swal.fire({
       title: "¿Cerrar sesión?",
@@ -93,6 +127,15 @@ const SideBar = ({ evento, id }) => {
               >
                 Archivo
               </a>
+            </li>
+            <li>
+              <div
+                className="md:p-4 py-2 flex justify-center cursor-pointer text-gray-500 hover:text-teal-500"
+                onClick={() => crearLista()}
+              >
+                <IoMdDownload size={22} />
+                <span>Lista en blanco</span>
+              </div>
             </li>
             {!evento?.Invitados?.length && id ? (
               <li>

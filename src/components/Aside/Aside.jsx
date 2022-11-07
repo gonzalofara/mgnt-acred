@@ -1,8 +1,37 @@
 import React from "react";
+import * as XLSX from "xlsx";
 import { Link, useHistory } from "react-router-dom";
 import { IoMdAdd, IoMdListBox, IoMdArrowRoundBack } from "react-icons/io";
 const Aside = ({ id, event, invitados, nuevoInv }) => {
   const history = useHistory();
+
+  const nuevaLista = [
+    {
+      id: "",
+      list_id: "",
+      first_name: " ",
+      last_name: " ",
+      company: " ",
+      title: " ",
+      email: " ",
+      phone: " ",
+      dni: " ",
+      status: " ",
+      path: " ",
+      properties: " ",
+    },
+  ];
+  const crearLista = () => {
+    const workSheet = XLSX.utils.json_to_sheet(nuevaLista);
+    const workBook = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(workBook, workSheet, "nuevaLista");
+    XLSX.write(workBook, { bookType: "xlsx", type: "buffer" });
+    XLSX.write(workBook, { bookType: "xlsx", type: "binary" });
+
+    XLSX.writeFile(workBook, "nueva-lista.xlsx");
+  };
+
   return (
     <div className="w-60 invisible md:visible md:min-h-full md:px-1 md:dark:bg-gray-900 absolute">
       <ul className="relative py-4">
@@ -58,6 +87,18 @@ const Aside = ({ id, event, invitados, nuevoInv }) => {
               </span>
             </div>
           </Link>
+
+          <div
+            className="flex gap-px items-center text-sm py-4 px-6 h-10 overflow-hidden text-teal-500 text-ellipsis whitespace-nowrap rounded hover:text-teal-400 hover:bg-gray-200 transition duration-300 ease-in-out hover:cursor-pointer"
+            data-mdb-ripple="true"
+            data-mdb-ripple-color="dark"
+            onClick={() => crearLista()}
+          >
+            <IoMdAdd size={22} />
+            <span className="mt-px text-gray-600 hover:text-gray-700 text-base">
+              Lista en blanco
+            </span>
+          </div>
         </li>
         {(event?.nombre || id || invitados || nuevoInv) && (
           <li className="relative text-start">
