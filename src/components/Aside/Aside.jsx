@@ -93,17 +93,17 @@ const Aside = ({ id, event, invitados, nuevoInv }) => {
             </div>
           </Link>
 
-          <div
+          <a
             className="flex gap-px items-center text-sm py-4 px-6 h-10 overflow-hidden text-teal-500 text-ellipsis whitespace-nowrap rounded hover:text-teal-400 hover:bg-gray-200 transition duration-300 ease-in-out hover:cursor-pointer"
             data-mdb-ripple="true"
             data-mdb-ripple-color="dark"
-            onClick={() => crearLista()}
+            href="./nueva-lista.xlsx"
           >
             <IoMdDownload size={22} />
             <span className="mt-px text-gray-600 hover:text-gray-700 text-base">
               Lista en blanco
             </span>
-          </div>
+          </a>
         </li>
         {(event?.nombre || id || invitados || nuevoInv) && (
           <li className="relative text-start">
