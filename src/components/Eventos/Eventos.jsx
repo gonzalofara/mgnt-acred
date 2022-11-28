@@ -233,7 +233,7 @@ const Eventos = () => {
                               ? "text-xs text-gray-700 hover:cursor-pointer group hover:text-gray-700 dark:hover:text-gray-500 flex gap-1 items-center w-[100px]"
                               : "text-xs text-rose-700 hover:cursor-pointer group hover:text-rose-700 dark:hover:text-rose-200 flex gap-1 items-center w-[100px]"
                           }
-                          onClick={handleDelete}
+                          onClick={() => handleDelete(e.id)}
                         >
                           <BsTrash size={18} />
                           <span className="opacity-0 group-hover:opacity-50 dark:group-hover:opacity-100">
