@@ -5,25 +5,68 @@ import {
   resetEventDetail,
   setEventStatus,
 } from "../../redux/actions/actions";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SideBar from "../SideBar/SideBar";
 import Aside from "../Aside/Aside";
 import Error from "../Error/Error";
-import { BsFillArchiveFill } from "react-icons/bs";
+import { BsFillArchiveFill, BsTrash } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
-
 import { MdOutlineAddCircle } from "react-icons/md";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Eventos = () => {
   const eventos = useSelector((state) => state.eventos);
   const tk = sessionStorage.getItem("token");
-
+  const history = useHistory();
   const [search, setSearch] = useState("");
   const [filtered, setFiltered] = useState([]);
   const [showFiltered, setShowFiltered] = useState(false);
 
   const dispatch = useDispatch();
+  // delete/:id
 
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "¿Eliminar evento?",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: `Cancelar`,
+      width: "300px",
+      color: "#8c8a8a",
+      confirmButtonColor: "#0d9488",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(
+            `https://backenddeploy-production.up.railway.app/eventos/delete/${id}`
+          )
+          .then((res) => {
+            Swal.fire({
+              title: "Evento eliminado correctamente",
+              confirmButtonText: "Ok",
+              confirmButtonColor: "#0d9488",
+              icon: "success",
+            }).then((result) => {
+              history.push("/eventos/");
+            });
+          })
+          .catch(function (error) {
+            Swal.fire({
+              title: "Ha ocurrido un error. Intente nuevamente.",
+              confirmButtonText: "Ok",
+              confirmButtonColor: "#e11d48",
+              icon: "error",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                history.push("/eventos/");
+              }
+              history.push("/eventos/");
+            });
+          });
+      }
+    });
+  };
   const handleChange = (e) => {
     let events = eventos;
     setSearch(e.currentTarget.value);
@@ -160,27 +203,44 @@ const Eventos = () => {
                     <footer
                       className={
                         e.status === "active"
-                          ? "mt-4 pl-4 py-3 bg-gray-200 dark:bg-gray-800"
-                          : "mt-4 pl-4 py-3 bg-rose-200 dark:bg-rose-800"
+                          ? "mt-4 pl-4 py-3 bg-gray-200 dark:bg-gray-800 flex gap-2"
+                          : "mt-4 pl-4 py-3 bg-rose-200 dark:bg-rose-800 flex gap-2"
                       }
                     >
-                      <p
-                        className={
-                          e.status === "active"
-                            ? "text-xs text-gray-700 hover:cursor-pointer group hover:text-gray-700 dark:hover:text-gray-500 flex gap-1 items-center w-[100px]"
-                            : "text-xs text-rose-700 hover:cursor-pointer group hover:text-rose-700 dark:hover:text-rose-200 flex gap-1 items-center w-[100px]"
-                        }
-                        onClick={() =>
-                          dispatch(
-                            setEventStatus(e.id, { archived: "true" })
-                          ).then(() => dispatch(getAllEvents()))
-                        }
-                      >
-                        <BsFillArchiveFill size={18} />
-                        <span className="opacity-0 group-hover:opacity-50 dark:group-hover:opacity-100">
-                          Archivar
-                        </span>
-                      </p>
+                      <div>
+                        <p
+                          className={
+                            e.status === "active"
+                              ? "text-xs text-gray-700 hover:cursor-pointer group hover:text-gray-700 dark:hover:text-gray-500 flex gap-1 items-center w-[100px]"
+                              : "text-xs text-rose-700 hover:cursor-pointer group hover:text-rose-700 dark:hover:text-rose-200 flex gap-1 items-center w-[100px]"
+                          }
+                          onClick={() =>
+                            dispatch(
+                              setEventStatus(e.id, { archived: "true" })
+                            ).then(() => dispatch(getAllEvents()))
+                          }
+                        >
+                          <BsFillArchiveFill size={18} />
+                          <span className="opacity-0 group-hover:opacity-50 dark:group-hover:opacity-100">
+                            Archivar
+                          </span>
+                        </p>
+                      </div>
+                      <div>
+                        <p
+                          className={
+                            e.status === "active"
+                              ? "text-xs text-gray-700 hover:cursor-pointer group hover:text-gray-700 dark:hover:text-gray-500 flex gap-1 items-center w-[100px]"
+                              : "text-xs text-rose-700 hover:cursor-pointer group hover:text-rose-700 dark:hover:text-rose-200 flex gap-1 items-center w-[100px]"
+                          }
+                          onClick={handleDelete}
+                        >
+                          <BsTrash size={18} />
+                          <span className="opacity-0 group-hover:opacity-50 dark:group-hover:opacity-100">
+                            Eliminar
+                          </span>
+                        </p>
+                      </div>
                     </footer>
                   </blockquote>
                 ))}
