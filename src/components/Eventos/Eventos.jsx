@@ -203,8 +203,8 @@ const Eventos = () => {
                     <footer
                       className={
                         e.status === "active"
-                          ? "mt-4 pl-4 py-3 bg-gray-200 dark:bg-gray-800 flex gap-2"
-                          : "mt-4 pl-4 py-3 bg-rose-200 dark:bg-rose-800 flex gap-2"
+                          ? "mt-4 pl-4 py-3 bg-gray-200 dark:bg-gray-800 flex justify-end gap-1"
+                          : "mt-4 pl-4 py-3 bg-rose-200 dark:bg-rose-800 flex justify-end gap-1"
                       }
                     >
                       <div>
