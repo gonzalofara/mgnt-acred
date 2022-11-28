@@ -4,8 +4,10 @@ import { getAllEvents, setEventStatus } from "../../redux/actions/actions";
 import SideBar from "../SideBar/SideBar";
 import ArchivoAside from "./ArchivoAside";
 import Error from "../Error/Error";
-import { BsFillArchiveFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { BsFillArchiveFill, BsTrash } from "react-icons/bs";
+import { Link, useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Archivo = () => {
   const tk = sessionStorage.getItem("token");
@@ -14,7 +16,48 @@ const Archivo = () => {
   );
 
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "¿Eliminar evento?",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: `Cancelar`,
+      width: "300px",
+      color: "#8c8a8a",
+      confirmButtonColor: "#0d9488",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(
+            `https://backenddeploy-production.up.railway.app/eventos/delete/${id}`
+          )
+          .then((res) => {
+            Swal.fire({
+              title: "Evento eliminado correctamente",
+              confirmButtonText: "Ok",
+              confirmButtonColor: "#0d9488",
+              icon: "success",
+            }).then((result) => {
+              history.go(0);
+            });
+          })
+          .catch(function (error) {
+            Swal.fire({
+              title: "Ha ocurrido un error. Intente nuevamente.",
+              confirmButtonText: "Ok",
+              confirmButtonColor: "#e11d48",
+              icon: "error",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                history.go(0);
+              }
+              history.go(0);
+            });
+          });
+      }
+    });
+  };
   useEffect(() => {
     dispatch(getAllEvents());
   }, [dispatch]);
@@ -75,27 +118,45 @@ const Archivo = () => {
                     <footer
                       className={
                         e.status === "active"
-                          ? "mt-4 pl-4 py-3 bg-gray-200 dark:bg-gray-800"
-                          : "mt-4 pl-4 py-3 bg-rose-200 dark:bg-rose-800"
+                          ? "mt-4 pl-4 py-3 bg-gray-200 dark:bg-gray-800 flex justify-end gap-1"
+                          : "mt-4 pl-4 py-3 bg-rose-200 dark:bg-rose-800 flex justify-end gap-1"
                       }
                     >
-                      <p
-                        className={
-                          e.status === "active"
-                            ? "text-xs text-gray-500 hover:cursor-pointer group hover:text-gray-700 dark:hover:text-gray-500 flex gap-1 items-center w-[100px]"
-                            : "text-xs text-rose-400 hover:cursor-pointer group hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-300 flex gap-1 items-center w-[100px]"
-                        }
-                        onClick={() =>
-                          dispatch(
-                            setEventStatus(e.id, { archived: "false" })
-                          ).then(() => dispatch(getAllEvents()))
-                        }
-                      >
-                        <BsFillArchiveFill size={18} />
-                        <span className="opacity-0 group-hover:opacity-50">
-                          Desarchivar
-                        </span>
-                      </p>
+                      <div>
+                        <p
+                          className={
+                            e.status === "active"
+                              ? "text-xs text-gray-500 hover:cursor-pointer group hover:text-gray-700 dark:hover:text-gray-500 flex gap-1 items-center w-[100px]"
+                              : "text-xs text-rose-400 hover:cursor-pointer group hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-300 flex gap-1 items-center w-[100px]"
+                          }
+                          onClick={() =>
+                            dispatch(
+                              setEventStatus(e.id, { archived: "false" })
+                            ).then(() => dispatch(getAllEvents()))
+                          }
+                        >
+                          <BsFillArchiveFill size={18} />
+                          <span className="opacity-0 group-hover:opacity-50">
+                            Desarchivar
+                          </span>
+                        </p>
+                      </div>
+
+                      <div>
+                        <p
+                          className={
+                            e.status === "active"
+                              ? "text-xs text-gray-700 hover:cursor-pointer group hover:text-gray-700 dark:hover:text-gray-500 flex gap-1 items-center w-[100px]"
+                              : "text-xs text-rose-700 hover:cursor-pointer group hover:text-rose-700 dark:hover:text-rose-200 flex gap-1 items-center w-[100px]"
+                          }
+                          onClick={() => handleDelete(e.id)}
+                        >
+                          <BsTrash size={18} />
+                          <span className="opacity-0 group-hover:opacity-50 dark:group-hover:opacity-100">
+                            Eliminar
+                          </span>
+                        </p>
+                      </div>
                     </footer>
                   </blockquote>
                 ))

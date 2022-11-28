@@ -48,7 +48,7 @@ const Eventos = () => {
               confirmButtonColor: "#0d9488",
               icon: "success",
             }).then((result) => {
-              history.push("/eventos/");
+              history.go(0);
             });
           })
           .catch(function (error) {
@@ -59,9 +59,9 @@ const Eventos = () => {
               icon: "error",
             }).then((result) => {
               if (result.isConfirmed) {
-                history.push("/eventos/");
+                history.go(0);
               }
-              history.push("/eventos/");
+              history.go(0);
             });
           });
       }
