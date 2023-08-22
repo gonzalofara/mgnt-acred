@@ -7,6 +7,7 @@ import {
   setInvitadoStatus,
 } from "../../redux/actions/actions";
 import { useSelector, useDispatch } from "react-redux";
+import { ImStatsBars } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { TiInputChecked } from "react-icons/ti";
