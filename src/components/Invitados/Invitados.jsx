@@ -11,7 +11,7 @@ import { ImStatsBars } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import { TiInputChecked } from "react-icons/ti";
-
+import * as XLSX from "xlsx";
 const Invitados = (props) => {
   const id = props.match.params.id;
   const evento = useSelector((state) => state.evento);
@@ -23,6 +23,18 @@ const Invitados = (props) => {
     dispatch(getEventDetail(id));
     /* eslint-disable */
   }, [dispatch]);
+
+  const descargarLista = () =>{
+    try {
+      let invitados = evento?.Invitados;
+      const wb = XLSX.utils.book_new();
+      const workSheet= XLSX.utils.json_to_sheet(invitados)
+      XLSX.utils.book_append_sheet(wb,workSheet,"invitados")
+      XLSX.writeFile(wb,"ListaInvitados.xlsx")
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   let n = 0;
 
   const handleChange = (e) => {
@@ -53,8 +65,9 @@ const Invitados = (props) => {
               {evento.cliente}
             </span>
           </h2>
-          <div className="flex gap-x-2">
-          <p
+          <div className="flex gap-x-2 mb-2">
+          <p      
+                onClick={descargarLista}
                 className={
                   "flex gap-1 md:mx-0 mx-auto items-center cursor-pointer bg-teal-600 w-[160px] mt-2 pl-2 text-gray-100 py-2 rounded-md hover:bg-teal-500 hover:text-gray-50 text-center"
                 }
