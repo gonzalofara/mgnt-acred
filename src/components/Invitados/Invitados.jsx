@@ -52,6 +52,18 @@ const Invitados = (props) => {
               {evento.cliente}
             </span>
           </h2>
+          <div className="flex gap-x-2">
+          <p
+                className={
+                  "flex gap-1 md:mx-0 mx-auto items-center cursor-pointer bg-teal-600 w-[160px] mt-2 pl-2 text-gray-100 py-2 rounded-md hover:bg-teal-500 hover:text-gray-50 text-center"
+                }
+              >
+                <span>
+                  <ImStatsBars size={20} />
+                </span>
+                  Descargar datos
+              </p>
+          </div>
           <div className="relative">
             <span
               className={
