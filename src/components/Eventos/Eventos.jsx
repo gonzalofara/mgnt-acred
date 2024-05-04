@@ -39,7 +39,7 @@ const Eventos = () => {
       if (result.isConfirmed) {
         axios
           .delete(
-            `https://backenddeploy-production.up.railway.app/eventos/delete/${id}`
+            `https://radiant-surprise-production.up.railway.app/eventos/delete/${id}`
           )
           .then((res) => {
             Swal.fire({

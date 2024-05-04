@@ -46,7 +46,7 @@ const NuevoInvitado = (props) => {
         if (result.isConfirmed) {
           axios
             .post(
-              `https://backenddeploy-production.up.railway.app/invitados/${id}`,
+              `https://radiant-surprise-production.up.railway.app/invitados/${id}`,
               [[invitado], { listName: invitado?.list_name }]
             )
             .then((res) => {
@@ -209,17 +209,17 @@ const NuevoInvitado = (props) => {
               <button
                 className={
                   invitado?.first_name &&
-                  invitado?.last_name &&
-                  invitado?.company &&
-                  invitado?.id
+                    invitado?.last_name &&
+                    invitado?.company &&
+                    invitado?.id
                     ? "bg-teal-500 mt-2 px-6 text-gray-200 hover:bg-teal-600 hover:text-gray-50"
                     : "bg-teal-700 mt-2 px-6 text-gray-200 opacity-50"
                 }
                 disabled={
                   invitado?.first_name &&
-                  invitado?.last_name &&
-                  invitado?.company &&
-                  invitado?.id
+                    invitado?.last_name &&
+                    invitado?.company &&
+                    invitado?.id
                     ? false
                     : true
                 }

@@ -13,7 +13,8 @@ export function getAllEvents() {
   return async function (dispatch) {
     try {
       const events = await axios.get(
-        "https://backenddeploy-production.up.railway.app/eventos"
+        "https://radiant-surprise-production.up.railway.app/eventos"
+       
       );
       return dispatch({
         type: GET_ALL_EVENTS,
@@ -28,7 +29,7 @@ export function getEventDetail(id) {
   return async function (dispatch) {
     try {
       const events = await axios.get(
-        "https://backenddeploy-production.up.railway.app/eventos/" + id
+        "https://radiant-surprise-production.up.railway.app/eventos/" + id
       );
       return dispatch({
         type: GET_EVENT_DETAIL,
@@ -44,7 +45,7 @@ export function setEventStatus(id, status, archived) {
     if (status) {
       try {
         const events = await axios.patch(
-          "https://backenddeploy-production.up.railway.app/eventos/" + id,
+          "https://radiant-surprise-production.up.railway.app/eventos/" + id,
           status
         );
         return dispatch({
@@ -57,7 +58,7 @@ export function setEventStatus(id, status, archived) {
     } else if (archived) {
       try {
         const events = await axios.patch(
-          "https://backenddeploy-production.up.railway.app/eventos/" + id,
+          "https://radiant-surprise-production.up.railway.app/eventos/" + id,
           archived
         );
         return dispatch({
@@ -75,7 +76,7 @@ export function setInvitadoStatus(id, status) {
   return async function (dispatch) {
     try {
       const invitado = await axios.patch(
-        "https://backenddeploy-production.up.railway.app/invitados/" + id,
+        "https://radiant-surprise-production.up.railway.app/invitados/" + id,
         status
       );
       return dispatch({
@@ -108,7 +109,7 @@ export function postEvents(evento) {
   return async function () {
     try {
       var json = await axios.post(
-        "https://backenddeploy-production.up.railway.app/eventos",
+        "https://radiant-surprise-production.up.railway.app/eventos",
         evento
       );
       console.log(json.data);
@@ -122,7 +123,7 @@ export function createList(id, lista) {
   try {
     return async function (dispatch) {
       return await axios.post(
-        `https://backenddeploy-production.up.railway.app/invitados/${id}`,
+        `https://radiant-surprise-production.up.railway.app/invitados/${id}`,
         lista
       );
     };
@@ -134,7 +135,7 @@ export function getInvitado(id) {
   try {
     return async function (dispatch) {
       const invitado = await axios.get(
-        `https://backenddeploy-production.up.railway.app/invitados/${id}`
+        `https://radiant-surprise-production.up.railway.app/invitados/${id}`
       );
       return dispatch({
         type: GET_INVITADO,

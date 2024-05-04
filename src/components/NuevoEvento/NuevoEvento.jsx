@@ -41,7 +41,7 @@ const NuevoEvento = () => {
         // dispatch(postEvents(evento));
         axios
           .post(
-            "https://backenddeploy-production.up.railway.app/eventos",
+            "https://radiant-surprise-production.up.railway.app/eventos",
             evento
           )
           .then((res) => {

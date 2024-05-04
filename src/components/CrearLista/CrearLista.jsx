@@ -53,7 +53,7 @@ const CrearLista = (props) => {
         if (result.isConfirmed) {
           axios
             .post(
-              `https://backenddeploy-production.up.railway.app/invitados/${id}`,
+              `https://radiant-surprise-production.up.railway.app/invitados/${id}`,
               [lista, listName]
             )
             .then((res) => {

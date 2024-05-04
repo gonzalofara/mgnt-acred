@@ -19,7 +19,7 @@ const LandingPage = () => {
     const { email, password } = input;
 
     axios
-      .post("https://backenddeploy-production.up.railway.app/login", {
+      .post("https://radiant-surprise-production.up.railway.app/login", {
         email,
         password,
       })
